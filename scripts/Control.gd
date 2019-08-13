@@ -1,8 +1,6 @@
 extends Control
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+signal tile_select
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -15,3 +13,8 @@ func _ready():
 
 func _on_Settings_Button_pressed():
 	print("Settings button pressed")
+
+
+func _on_Tile_Button_pressed(tile_id):
+	print_debug("Tile id: " + str(tile_id) + " selected")
+	emit_signal("tile_select", tile_id)

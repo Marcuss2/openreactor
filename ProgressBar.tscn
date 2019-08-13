@@ -1,9 +1,0 @@
-[gd_scene format=2]
-
-[node name="ProgressBar" type="TextureProgress"]
-margin_right = 32.0
-margin_bottom = 2.0
-value = 100.0
-fill_mode = 1
-tint_under = Color( 1, 1, 1, 0 )
-tint_over = Color( 1, 1, 1, 0 )

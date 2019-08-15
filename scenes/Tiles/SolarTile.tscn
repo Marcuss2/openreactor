@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://scripts/Tile.gd" type="Script" id=1]
-[ext_resource path="res://assets/empty_tile.png" type="Texture" id=2]
+[ext_resource path="res://scripts/SolarTile.gd" type="Script" id=1]
+[ext_resource path="res://assets/solar.png" type="Texture" id=2]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -14,13 +14,15 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 16, 16 )
 
-[node name="Tile" type="Area2D" groups=[
+[node name="SolarTile" type="Area2D" groups=[
 "Tiles",
 ]]
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
+id = 1
+cost = 1
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
@@ -36,10 +38,4 @@ rect_pivot_offset = Vector2( -64, -16 )
 mouse_filter = 2
 custom_constants/separation = 0
 alignment = 2
-
-[node name="TopPad" type="Control" parent="Bars"]
-margin_right = 32.0
-margin_bottom = 16.0
-mouse_filter = 2
-size_flags_vertical = 3
 [connection signal="input_event" from="." to="." method="_on_Tile_input_event"]

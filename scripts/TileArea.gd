@@ -37,10 +37,6 @@ func replace_tile(id, x_indice, y_indice):
 	add_child(new_tile)
 
 
-func _process(delta):
-	execute_tile_logic()
-
-
 func get_surrounding_tiles(x_indice, y_indice):
 	var surrounding_tiles = []
 	if x_indice != 0:

@@ -4,3 +4,9 @@
 
 [node name="TileArea" type="Node2D"]
 script = ExtResource( 1 )
+gridsize_x = 24
+gridsize_y = 20
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+[connection signal="timeout" from="Timer" to="." method="execute_tile_logic"]

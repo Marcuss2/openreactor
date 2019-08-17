@@ -1,6 +1,6 @@
 extends "res://scripts/Tile.gd"
 
-export (int) var power_gen = 1
+export var power_gen = 1
 
 func tile_logic(tiles):
 	var heat = .get_entity("Heat")
@@ -9,3 +9,8 @@ func tile_logic(tiles):
 		heat.amount -= power_gen
 		water.amount -= power_gen
 		Global.money += power_gen
+		
+func get_sell_cost():
+	if power_gen == 1:
+		return 1
+	return .get_sell_cost()

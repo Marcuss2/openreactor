@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scripts/Control.gd" type="Script" id=1]
 [ext_resource path="res://scripts/MoneyCount.gd" type="Script" id=2]
 [ext_resource path="res://scenes/TilePick.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/solar.png" type="Texture" id=4]
+[ext_resource path="res://assets/water.png" type="Texture" id=5]
+[ext_resource path="res://assets/lowgen.png" type="Texture" id=6]
 
 [node name="UI" type="Control"]
 light_mask = 0
@@ -69,5 +72,21 @@ margin_bottom = 32.0
 alignment = 2
 
 [node name="TilePick" parent="LeftContainer/VBoxContainer/HBoxContainer" instance=ExtResource( 3 )]
+id = 1
+texture = ExtResource( 4 )
+
+[node name="TilePick2" parent="LeftContainer/VBoxContainer/HBoxContainer" instance=ExtResource( 3 )]
+margin_left = 78.0
+margin_right = 152.0
+id = 2
+texture = ExtResource( 5 )
+
+[node name="TilePick3" parent="LeftContainer/VBoxContainer/HBoxContainer" instance=ExtResource( 3 )]
+margin_left = 156.0
 margin_right = 232.0
+id = 3
+texture = ExtResource( 6 )
 [connection signal="pressed" from="GeneralContainer/VBoxContainer/Button" to="." method="_on_Settings_Button_pressed"]
+[connection signal="clicked" from="LeftContainer/VBoxContainer/HBoxContainer/TilePick" to="." method="_on_Tile_Button_pressed"]
+[connection signal="clicked" from="LeftContainer/VBoxContainer/HBoxContainer/TilePick2" to="." method="_on_Tile_Button_pressed"]
+[connection signal="clicked" from="LeftContainer/VBoxContainer/HBoxContainer/TilePick3" to="." method="_on_Tile_Button_pressed"]

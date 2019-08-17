@@ -8,4 +8,5 @@
 
 [node name="Global" type="Node"]
 script = ExtResource( 1 )
+cost = [ 0, 1, 1, 1 ]
 tile_resource = [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ) ]

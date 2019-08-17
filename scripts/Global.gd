@@ -1,5 +1,6 @@
 extends Node
 
+export var cost = []
 export var tile_resource = []
 var money = 5
 

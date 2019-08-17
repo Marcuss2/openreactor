@@ -4,8 +4,8 @@ signal clicked
 signal exploded
 signal clear
 
-export (int) var id = 0
-export (int) var cost = 0
+export var id = 0
+export var cost = 0
 var tile_entities = {}
 
 var x_indice = 0
@@ -48,9 +48,17 @@ func get_entity(entity_name):
 	return tile_entities[entity_name]
 
 
+func get_sell_cost():
+	if has_entity("Heat"):
+		var heat = get_entity("Heat")
+		return cost - int(cost * ceil(float(heat.amount) / heat.capacity))
+	return cost
+
+
 func _on_Tile_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_LEFT and event.pressed:
 			emit_signal("clicked", x_indice, y_indice)
 		if event.button_index == BUTTON_RIGHT and event.pressed:
+			Global.money += get_sell_cost()
 			emit_signal("clear", x_indice, y_indice)

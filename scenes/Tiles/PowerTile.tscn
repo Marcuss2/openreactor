@@ -23,15 +23,12 @@ __meta__ = {
 "_edit_group_": true
 }
 id = 2
-cost = 1
+cost = 1.0
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 2 )
-
-[node name="Bars" type="VBoxContainer" parent="."]
+[node name="Bars" type="VBoxContainer" parent="AnimatedSprite"]
 margin_left = -16.0
 margin_right = 16.0
 margin_bottom = 16.0
@@ -40,15 +37,18 @@ mouse_filter = 2
 custom_constants/separation = 0
 alignment = 2
 
-[node name="Water" parent="Bars" instance=ExtResource( 3 )]
+[node name="Water" parent="AnimatedSprite/Bars" instance=ExtResource( 3 )]
 margin_top = 12.0
 margin_bottom = 14.0
 tint_progress = Color( 0.00784314, 0, 1, 1 )
 
-[node name="Heat" parent="Bars" instance=ExtResource( 3 )]
+[node name="Heat" parent="AnimatedSprite/Bars" instance=ExtResource( 3 )]
 margin_top = 14.0
 margin_bottom = 16.0
 tint_progress = Color( 1, 0, 0, 1 )
 critical = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
 [connection signal="input_event" from="." to="." method="_on_Tile_input_event"]
-[connection signal="critical_over_capacity" from="Bars/Heat" to="." method="explode"]
+[connection signal="critical_over_capacity" from="AnimatedSprite/Bars/Heat" to="." method="explode"]

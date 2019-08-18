@@ -5,19 +5,27 @@ signal exploded
 signal clear
 
 export var id = 0
-export var cost = 0
+export var cost = 0.0
 var tile_entities = {}
+var enabled = true
 
 var x_indice = 0
 var y_indice = 0
 
 func _ready():
-	for entity in $Bars.get_children():
+	for entity in $AnimatedSprite/Bars.get_children():
 		tile_entities[entity.name] = entity
 
 
 func tile_logic(tiles):
 	pass
+
+
+func _process(delta):
+	if enabled:
+		$AnimatedSprite.modulate = Color(1, 1, 1, 1)
+	else:
+		$AnimatedSprite.modulate = Color(1, 1, 1, 0.5)
 
 
 func get_entities_from_tiles(entity, tiles):

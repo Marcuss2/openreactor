@@ -22,6 +22,12 @@ func _ready():
 		tiles.append([])
 		for j in range(gridsize_y):
 			place_tile(0, i, j)
+	for i in range(gridsize_x):
+		for j in range(3, gridsize_y):
+			tiles[i][j].enabled = false
+	for i in range(3, gridsize_x):
+		for j in range(gridsize_y):
+			tiles[i][j].enabled = false
 
 
 func replace_tile(id, x_indice, y_indice):
@@ -57,8 +63,7 @@ func execute_tile_logic():
 
 
 func _on_Tile_clicked(x_indice, y_indice):
-	print("Clicked! " + str(x_indice) + " " + str(y_indice))
-	if tiles[x_indice][y_indice].id == 0:
+	if tiles[x_indice][y_indice].id == 0 and tiles[x_indice][y_indice].enabled:
 		replace_tile(selected_tile_id, x_indice, y_indice)
 
 

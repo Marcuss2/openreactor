@@ -25,10 +25,7 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 2 )
-
-[node name="Bars" type="VBoxContainer" parent="."]
+[node name="Bars" type="VBoxContainer" parent="AnimatedSprite"]
 margin_left = -16.0
 margin_right = 16.0
 margin_bottom = 16.0
@@ -36,4 +33,7 @@ rect_pivot_offset = Vector2( -64, -16 )
 mouse_filter = 2
 custom_constants/separation = 0
 alignment = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
 [connection signal="input_event" from="." to="." method="_on_Tile_input_event"]

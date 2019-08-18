@@ -9,3 +9,5 @@ func tile_logic(tiles):
 			entity.amount = entity.capacity
 		else:
 			entity.amount += water_gen / water_entities.size()
+	
+	.tile_logic(tiles)

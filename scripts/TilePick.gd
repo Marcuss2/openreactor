@@ -8,7 +8,7 @@ export var selected = Color(0.5, 0.5, 1)
 export var unavaiable = Color(1, 1, 1, 0.5)
 
 var is_selected = false
-var cost = 1
+var cost = 1.0
 
 func _ready():
 	$TextureRect.texture = texture

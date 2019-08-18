@@ -1,4 +1,4 @@
 extends Label
 
 func _process(delta):
-	text = str(Global.money)
+	text = Global.get_money_string()

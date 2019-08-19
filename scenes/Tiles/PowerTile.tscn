@@ -17,6 +17,7 @@ extents = Vector2( 16, 16 )
 
 [node name="PowerTile" type="Area2D" groups=[
 "Tiles",
+"persist_2",
 ]]
 script = ExtResource( 1 )
 __meta__ = {
@@ -46,7 +47,6 @@ tint_progress = Color( 0.00784314, 0, 1, 1 )
 margin_top = 14.0
 margin_bottom = 16.0
 tint_progress = Color( 1, 0, 0, 1 )
-critical = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 2 )

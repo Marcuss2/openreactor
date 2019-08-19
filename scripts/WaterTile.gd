@@ -9,5 +9,10 @@ func tile_logic(tiles):
 			entity.amount = entity.capacity
 		else:
 			entity.amount += water_gen / water_entities.size()
-	
 	.tile_logic(tiles)
+
+
+func save():
+	var save_dict = .save()
+	save_dict["water_gen"] = water_gen
+	return save_dict

@@ -1,6 +1,6 @@
 extends "res://scripts/Tile.gd"
 
-export (int) var heat_gen = 4.0
+export var heat_gen = 4.0
 
 func tile_logic(tiles):
 	var heat_entities = .get_entities_from_tiles("Heat", tiles)
@@ -9,5 +9,10 @@ func tile_logic(tiles):
 			entity.amount = entity.capacity
 		else:
 			entity.amount += heat_gen / heat_entities.size()
-	
 	.tile_logic(tiles)
+
+
+func save():
+	var save_dict = .save()
+	save_dict["heat_gen"] = heat_gen
+	return save_dict

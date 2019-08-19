@@ -12,13 +12,34 @@ var enabled = true
 var x_indice = 0
 var y_indice = 0
 
+
+func tile_logic(tiles):
+	pass
+
+
 func _ready():
 	for entity in $AnimatedSprite/Bars.get_children():
 		tile_entities[entity.name] = entity
 
 
-func tile_logic(tiles):
-	pass
+func save():
+	var save_dict = {
+		"filename" : get_filename(),
+		"parent" : get_parent().get_path(),
+		"name" : name,
+		"id" : id,
+		"cost" : cost,
+		"enabled" : enabled,
+		"pos_x" : position.x,
+		"pos_y" : position.y,
+		"x_indice" : x_indice,
+		"y_indice" : y_indice
+		}
+	return save_dict
+
+
+func after_load():
+	_ready()
 
 
 func _process(delta):

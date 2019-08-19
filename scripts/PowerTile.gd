@@ -17,3 +17,9 @@ func get_sell_cost():
 	if int(power_gen) == 1:
 		return 1.0
 	return .get_sell_cost()
+	
+	
+func save():
+	var save_dict = .save()
+	save_dict["power_gen"] = power_gen
+	return save_dict

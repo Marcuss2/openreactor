@@ -2,7 +2,9 @@
 
 [ext_resource path="res://scripts/TileArea.gd" type="Script" id=1]
 
-[node name="TileArea" type="Node2D"]
+[node name="TileArea" type="Node2D" groups=[
+"persist_1",
+]]
 script = ExtResource( 1 )
 gridsize_x = 24
 gridsize_y = 20

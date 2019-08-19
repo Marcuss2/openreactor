@@ -16,6 +16,7 @@ extents = Vector2( 16, 16 )
 
 [node name="SolarTile" type="Area2D" groups=[
 "Tiles",
+"persist_2",
 ]]
 script = ExtResource( 1 )
 __meta__ = {

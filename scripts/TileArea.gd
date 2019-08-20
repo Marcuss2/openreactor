@@ -94,6 +94,8 @@ func _on_Tile_clicked(x_indice, y_indice):
 
 
 func _on_Tile_clear(x_indice, y_indice):
+	if tiles[x_indice][y_indice].id == 0 and !tiles[x_indice][y_indice].enabled:
+		return
 	replace_tile(0, x_indice, y_indice)
 
 func _on_Tile_exploded(x_indice, y_indice):

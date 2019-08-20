@@ -31,7 +31,11 @@ func save():
 		"amount" : amount,
 		"capacity" : capacity,
 		"pos_x" : position.x,
-		"pos_y" : position.y
+		"pos_y" : position.y,
+		"tint_progress_r" : tint_progress.r,
+		"tint_progress_g" : tint_progress.g,
+		"tint_progress_b" : tint_progress.b,
+		"tint_progress_a" : tint_progress.a
 		}
 	return save_dict
 	

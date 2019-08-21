@@ -12,9 +12,16 @@ var enabled = true
 var x_indice = 0
 var y_indice = 0
 
+var mouse_in = false
+
+export var hover_text = "An empty tile"
 
 func tile_logic(tiles):
 	pass
+
+
+func get_hover_text():
+	return hover_text
 
 
 func _ready():
@@ -47,6 +54,8 @@ func _process(delta):
 		$AnimatedSprite.modulate = Color(1, 1, 1, 1)
 	else:
 		$AnimatedSprite.modulate = Color(1, 1, 1, 0.5)
+	if mouse_in:
+		Global.set_text_hover_label(get_hover_text())
 
 
 func get_entities_from_tiles(entity, tiles):
@@ -91,3 +100,9 @@ func _on_Tile_input_event(viewport, event, shape_idx):
 		if event.button_index == BUTTON_RIGHT and event.pressed:
 			Global.money += get_sell_cost()
 			emit_signal("clear", x_indice, y_indice)
+
+
+func _on_Tile_mouse_entered():
+	for i in get_tree().get_nodes_in_group("tiles"):
+		i.mouse_in = false
+	mouse_in = true

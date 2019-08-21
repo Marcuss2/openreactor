@@ -16,3 +16,7 @@ func save():
 	var save_dict = .save()
 	save_dict["water_gen"] = water_gen
 	return save_dict
+
+
+func get_hover_text():
+	return hover_text + "\nWater generation: " + str(water_gen)

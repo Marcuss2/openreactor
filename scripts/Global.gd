@@ -1,11 +1,23 @@
 extends Node
 
+
 export var cost = []
 export var tile_resource = []
 export var money = 3.0
 
 
 var magnitudes = ["", "k", "M", "G", "T", "P", "E", "Z", "Y"]
+
+
+func hovered(id):
+	var temporary_tile = tile_resource[id].instance()
+	set_upgrades(temporary_tile)
+	set_text_hover_label(temporary_tile.get_hover_text())
+	temporary_tile.queue_free()
+
+
+func set_upgrades(tile):
+	return tile
 
 
 func get_money_string():
@@ -21,6 +33,11 @@ func get_tile_instance(id):
 	return tile_resource[id].instance()
 
 
+func set_text_hover_label(text):
+	for i in get_tree().get_nodes_in_group("hover_label"):
+		i.call("set_text", text)
+
+
 func save_globals(save_game):
 	var save_dict = {
 		"money" : money
@@ -28,9 +45,7 @@ func save_globals(save_game):
 	save_game.store_line(to_json(save_dict))
 
 
-func save_game():
-	var save_game = File.new()
-	save_game.open_compressed("user://newsavegame.save", File.WRITE, File.COMPRESSION_ZSTD)
+func save_serialization(save_game):
 	save_globals(save_game)
 	var save_nodes = get_tree().get_nodes_in_group("persist_1")
 	for i in save_nodes:
@@ -44,6 +59,12 @@ func save_game():
 	for i in save_nodes:
 		var node_data = i.call("save")
 		save_game.store_line(to_json(node_data))
+
+
+func save_game():
+	var save_game = File.new()
+	save_game.open_compressed("user://newsavegame.save", File.WRITE, File.COMPRESSION_ZSTD)
+	save_serialization(save_game)
 	save_game.close()
 	var dir = Directory.new()
 	if dir.file_exists("user://savegame.save"):

@@ -4,8 +4,8 @@ signal clicked
 
 export var id = 0
 export (Texture) var texture
-export var selected = Color(0.5, 0.5, 1)
-export var unavaiable = Color(1, 1, 1, 0.5)
+export var selected = Color(0.7, 0.7, 1)
+export var unavaiable = Color(0.7, 0.7, 0.7, 0.5)
 
 var is_selected = false
 var cost = 1.0
@@ -18,6 +18,10 @@ func _on_TextureRect_gui_input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_LEFT and event.pressed and !is_selected:
 			emit_signal("clicked", id)
+	if event is InputEventMouseMotion:
+		for i in get_tree().get_nodes_in_group("tiles"):
+			i.mouse_in = false
+		Global.hovered(id)
 
 
 func reset_select(id):

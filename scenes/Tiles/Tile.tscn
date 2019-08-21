@@ -15,7 +15,7 @@ animations = [ {
 extents = Vector2( 16, 16 )
 
 [node name="Tile" type="Area2D" groups=[
-"Tiles",
+"tiles",
 "persist_2",
 ]]
 script = ExtResource( 1 )
@@ -38,3 +38,5 @@ alignment = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 2 )
 [connection signal="input_event" from="." to="." method="_on_Tile_input_event"]
+[connection signal="mouse_entered" from="." to="." method="_on_Tile_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_Tile_mouse_exited"]

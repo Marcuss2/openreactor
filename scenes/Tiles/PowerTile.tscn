@@ -16,7 +16,7 @@ animations = [ {
 extents = Vector2( 16, 16 )
 
 [node name="PowerTile" type="Area2D" groups=[
-"Tiles",
+"tiles",
 "persist_2",
 ]]
 script = ExtResource( 1 )
@@ -25,6 +25,7 @@ __meta__ = {
 }
 id = 2
 cost = 1.0
+hover_text = "Simple power plant. Takes heat and water and converts them into power."
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
@@ -51,4 +52,6 @@ tint_progress = Color( 1, 0, 0, 1 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 2 )
 [connection signal="input_event" from="." to="." method="_on_Tile_input_event"]
+[connection signal="mouse_entered" from="." to="." method="_on_Tile_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_Tile_mouse_exited"]
 [connection signal="critical_over_capacity" from="AnimatedSprite/Bars/Heat" to="." method="explode"]

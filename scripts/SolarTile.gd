@@ -16,3 +16,7 @@ func save():
 	var save_dict = .save()
 	save_dict["heat_gen"] = heat_gen
 	return save_dict
+
+
+func get_hover_text():
+	return hover_text + "\nHeat generation: " + str(heat_gen)

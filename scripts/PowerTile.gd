@@ -23,3 +23,9 @@ func save():
 	var save_dict = .save()
 	save_dict["power_gen"] = power_gen
 	return save_dict
+
+
+func get_hover_text():
+	var text = hover_text + "\nPower generation: " + str(power_gen) + " "
+	text += $AnimatedSprite/Bars/Heat.get_hover_text() + " " + $AnimatedSprite/Bars/Water.get_hover_text()
+	return text

@@ -21,6 +21,13 @@ func _process(delta):
 	amount = amount if amount <= capacity else capacity
 
 
+func get_hover_text():
+	if is_inside_tree():
+		return name + ": " + str(amount) + "/" + str(capacity)
+	else:
+		return name + " capacity: " + str(capacity)
+
+
 func save():
 	var save_dict = {
 		"filename" : get_filename(),

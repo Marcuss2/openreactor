@@ -5,9 +5,12 @@ signal exploded
 signal clear
 
 export var id = 0
+export var upgrade_id = 0
 export var cost = 0.0
 var tile_entities = {}
 var enabled = true
+
+
 
 var x_indice = 0
 var y_indice = 0
@@ -17,7 +20,8 @@ var mouse_in = false
 export var hover_text = "An empty tile"
 
 func tile_logic(tiles):
-	pass
+	if mouse_in:
+		Global.set_text_hover_label(get_hover_text())
 
 
 func get_hover_text():
@@ -35,6 +39,7 @@ func save():
 		"parent" : get_parent().get_path(),
 		"name" : name,
 		"id" : id,
+		"upgrade_id" : upgrade_id,
 		"cost" : cost,
 		"enabled" : enabled,
 		"pos_x" : position.x,
@@ -54,8 +59,6 @@ func _process(delta):
 		$AnimatedSprite.modulate = Color(1, 1, 1, 1)
 	else:
 		$AnimatedSprite.modulate = Color(1, 1, 1, 0.5)
-	if mouse_in:
-		Global.set_text_hover_label(get_hover_text())
 
 
 func get_entities_from_tiles(entity, tiles):
@@ -96,13 +99,28 @@ func get_sell_cost():
 func _on_Tile_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_LEFT and event.pressed:
+			print_debug("tile clicked")
 			emit_signal("clicked", x_indice, y_indice)
 		if event.button_index == BUTTON_RIGHT and event.pressed:
 			Global.money += get_sell_cost()
 			emit_signal("clear", x_indice, y_indice)
 
 
+func remove_mouse_in():
+	mouse_in = false
+	remove_from_group("mouse_in")
+
+
+func set_enabled(enabled):
+	self.enabled = enabled
+
+
+func get_enabled():
+	return enabled
+
+
 func _on_Tile_mouse_entered():
-	for i in get_tree().get_nodes_in_group("tiles"):
-		i.mouse_in = false
+	get_tree().call_group("mouse_in", "remove_mouse_in")
+	add_to_group("mouse_in")
 	mouse_in = true
+	Global.set_text_hover_label(get_hover_text())

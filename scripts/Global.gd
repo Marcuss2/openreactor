@@ -6,6 +6,9 @@ export var tile_resource = []
 export var money = 3.0
 
 
+var upgrades = []
+
+
 var magnitudes = ["", "k", "M", "G", "T", "P", "E", "Z", "Y"]
 
 
@@ -20,13 +23,16 @@ func set_upgrades(tile):
 	return tile
 
 
-func get_money_string():
-	var mag = money
+func get_magnified_string(number):
 	var i = 0
-	while mag > 10000:
-		mag /= 1000
+	while number > 10000:
+		number /= 1000
 		i += 1
-	return str(mag) + magnitudes[i]
+	return ("%.1f" % number) + magnitudes[i]
+
+
+func get_money_string():
+	return get_magnified_string(money)
 
 
 func get_tile_instance(id):
@@ -34,8 +40,7 @@ func get_tile_instance(id):
 
 
 func set_text_hover_label(text):
-	for i in get_tree().get_nodes_in_group("hover_label"):
-		i.call("set_text", text)
+	get_tree().call_group("hover_label", "set_text", text)
 
 
 func save_globals(save_game):

@@ -26,6 +26,7 @@ func save():
 
 
 func get_hover_text():
-	var text = hover_text + "\nPower generation: " + str(power_gen) + " "
-	text += $AnimatedSprite/Bars/Heat.get_hover_text() + " " + $AnimatedSprite/Bars/Water.get_hover_text()
+	var text = hover_text + "\nCost: " + Global.get_magnified_string(get_sell_cost()) + " Power generation: " 
+	text += str(power_gen) + " " + $AnimatedSprite/Bars/Heat.get_hover_text() + " "
+	text += $AnimatedSprite/Bars/Water.get_hover_text()
 	return text

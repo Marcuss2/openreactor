@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/UpgradeButton.tscn" type="PackedScene" id=1]
+
+[node name="UpgradeContainer" type="VBoxContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 8.0
+margin_right = -260.0
+margin_bottom = -132.0
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_right = 760.0
+
+[node name="UpgradeButton" parent="HBoxContainer" instance=ExtResource( 1 )]
+text_label = "Increase size of the reactor."
+type = 4
+unlock_type_group = "size_upgrade_"
+unlock_type_function = "set_enabled"
+unlock_type_argument = [ true ]
+increment_limit = 23

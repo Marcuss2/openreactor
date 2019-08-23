@@ -16,9 +16,10 @@ animations = [ {
 extents = Vector2( 16, 16 )
 
 [node name="PowerTile" type="Area2D" groups=[
-"tiles",
 "persist_2",
+"tiles",
 ]]
+position = Vector2( 0, 0.0290356 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
@@ -36,22 +37,23 @@ margin_right = 16.0
 margin_bottom = 16.0
 rect_pivot_offset = Vector2( -64, -16 )
 mouse_filter = 2
-custom_constants/separation = 0
+custom_constants/separation = -1
 alignment = 2
 
 [node name="Water" parent="AnimatedSprite/Bars" instance=ExtResource( 3 )]
-margin_top = 12.0
-margin_bottom = 14.0
-tint_progress = Color( 0.00784314, 0, 1, 1 )
+margin_top = 9.0
+margin_bottom = 13.0
+mouse_filter = 2
+tint_progress = Color( 0.27451, 0.392157, 1, 1 )
 
 [node name="Heat" parent="AnimatedSprite/Bars" instance=ExtResource( 3 )]
-margin_top = 14.0
+margin_top = 12.0
 margin_bottom = 16.0
+mouse_filter = 2
 tint_progress = Color( 1, 0, 0, 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 2 )
 [connection signal="input_event" from="." to="." method="_on_Tile_input_event"]
 [connection signal="mouse_entered" from="." to="." method="_on_Tile_mouse_entered"]
-[connection signal="mouse_exited" from="." to="." method="_on_Tile_mouse_exited"]
 [connection signal="critical_over_capacity" from="AnimatedSprite/Bars/Heat" to="." method="explode"]

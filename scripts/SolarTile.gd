@@ -19,4 +19,4 @@ func save():
 
 
 func get_hover_text():
-	return hover_text + "\nHeat generation: " + str(heat_gen)
+	return hover_text + "\nCost: %s Heat generation: %s" % [Global.get_magnified_string(cost), Global.get_magnified_string(heat_gen)]

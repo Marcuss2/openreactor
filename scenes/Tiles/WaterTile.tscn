@@ -15,8 +15,8 @@ animations = [ {
 extents = Vector2( 16, 16 )
 
 [node name="WaterTile" type="Area2D" groups=[
-"tiles",
 "persist_2",
+"tiles",
 ]]
 script = ExtResource( 1 )
 __meta__ = {
@@ -42,4 +42,3 @@ alignment = 2
 shape = SubResource( 2 )
 [connection signal="input_event" from="." to="." method="_on_Tile_input_event"]
 [connection signal="mouse_entered" from="." to="." method="_on_Tile_mouse_entered"]
-[connection signal="mouse_exited" from="." to="." method="_on_Tile_mouse_exited"]

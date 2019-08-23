@@ -10,17 +10,18 @@ export var unavaiable = Color(0.7, 0.7, 0.7, 0.5)
 var is_selected = false
 var cost = 1.0
 
+
 func _ready():
 	$TextureRect.texture = texture
 	cost = Global.cost[id]
+
 
 func _on_TextureRect_gui_input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_LEFT and event.pressed and !is_selected:
 			emit_signal("clicked", id)
 	if event is InputEventMouseMotion:
-		for i in get_tree().get_nodes_in_group("tiles"):
-			i.mouse_in = false
+		get_tree().call_group("mouse_in", "remove_mouse_in")
 		Global.hovered(id)
 
 

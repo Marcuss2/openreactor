@@ -4,7 +4,7 @@
 [ext_resource path="res://scripts/MoneyCount.gd" type="Script" id=2]
 [ext_resource path="res://styles/tab_fg.tres" type="StyleBox" id=3]
 [ext_resource path="res://styles/tab_bg.tres" type="StyleBox" id=4]
-[ext_resource path="res://scenes/TabContainer.gd" type="Script" id=5]
+[ext_resource path="res://scripts/TabContainer.gd" type="Script" id=5]
 [ext_resource path="res://assets/utility.png" type="Texture" id=6]
 [ext_resource path="res://assets/reactor_tile.png" type="Texture" id=7]
 [ext_resource path="res://scenes/TilePick.tscn" type="PackedScene" id=8]
@@ -176,8 +176,7 @@ margin_top = 77.0
 margin_right = 1016.0
 margin_bottom = 112.0
 custom_constants/line_separation = -4
-text = "Firstline
-Secondline g"
+text = "An empty tile"
 scroll_active = false
 [connection signal="pressed" from="GeneralContainer/VBoxContainer/Button" to="." method="_on_Settings_Button_pressed"]
 [connection signal="clicked" from="TabContainer/ToolContainer/HBoxContainer/TilePick" to="." method="_on_Tile_Button_pressed"]

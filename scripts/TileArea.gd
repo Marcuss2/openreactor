@@ -26,6 +26,8 @@ func after_load():
 			tile.connect("clicked", self, "_on_Tile_clicked")
 			tile.connect("clear", self, "_on_Tile_clear")
 			tiles[tile.x_indice][tile.y_indice] = tile
+			if tile.x_indice > 2 or tile.y_indice > 2:
+				tile.add_to_group("size_upgrade_" + str(tile.x_indice if tile.x_indice > tile.y_indice else tile.y_indice))
 
 
 func place_tile(id, x_indice, y_indice):
@@ -50,9 +52,11 @@ func init():
 	for i in range(gridsize_x):
 		for j in range(3, gridsize_y):
 			tiles[i][j].enabled = false
+			tiles[i][j].add_to_group("size_upgrade_" + str(i if i > j else j))
 	for i in range(3, gridsize_x):
 		for j in range(gridsize_y):
 			tiles[i][j].enabled = false
+			tiles[i][j].add_to_group("size_upgrade_" + str(i if i > j else j))
 
 
 func replace_tile(id, x_indice, y_indice):
@@ -89,6 +93,7 @@ func execute_tile_logic():
 
 
 func _on_Tile_clicked(x_indice, y_indice):
+	print_debug("Tile: %d %d" % [x_indice, y_indice])
 	if tiles[x_indice][y_indice].id == 0 and tiles[x_indice][y_indice].enabled:
 		replace_tile(selected_tile_id, x_indice, y_indice)
 

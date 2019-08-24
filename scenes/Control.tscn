@@ -56,12 +56,6 @@ text = "$1000"
 align = 1
 script = ExtResource( 2 )
 
-[node name="TopContainer" type="MarginContainer" parent="."]
-margin_left = 248.0
-margin_top = 8.0
-margin_right = 1016.0
-margin_bottom = 96.0
-
 [node name="TabContainer" type="TabContainer" parent="."]
 margin_left = 8.0
 margin_top = 120.0

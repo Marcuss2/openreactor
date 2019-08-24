@@ -16,8 +16,9 @@ animations = [ {
 extents = Vector2( 16, 16 )
 
 [node name="PowerTile" type="Area2D" groups=[
-"persist_2",
 "tiles",
+"persist_2",
+"basic_power_tile",
 ]]
 position = Vector2( 0, 0.0290356 )
 script = ExtResource( 1 )
@@ -25,6 +26,7 @@ __meta__ = {
 "_edit_group_": true
 }
 id = 2
+upgrade_id = 2
 cost = 1.0
 hover_text = "Simple power plant. Takes heat and water and converts them into power."
 

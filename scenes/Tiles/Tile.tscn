@@ -15,8 +15,8 @@ animations = [ {
 extents = Vector2( 16, 16 )
 
 [node name="Tile" type="Area2D" groups=[
-"persist_2",
 "tiles",
+"persist_2",
 ]]
 script = ExtResource( 1 )
 __meta__ = {

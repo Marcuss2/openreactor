@@ -10,11 +10,14 @@
 script = ExtResource( 1 )
 
 [node name="TabContainer" type="TabContainer" parent="."]
-margin_left = 248.0
-margin_top = 120.0
-margin_right = 1016.0
-margin_bottom = 760.0
+margin_left = 244.0
+margin_top = 112.0
+margin_right = 1020.0
+margin_bottom = 764.0
 mouse_filter = 2
+custom_constants/hseparation = 0
+custom_constants/top_margin = 0
+custom_constants/side_margin = 0
 tabs_visible = false
 
 [node name="CenterContainer" type="CenterContainer" parent="TabContainer"]
@@ -44,13 +47,38 @@ margin_right = -4.0
 margin_bottom = -4.0
 
 [node name="Control" parent="." instance=ExtResource( 5 )]
-margin_left = 0.224976
+margin_left = -0.0439602
 margin_top = 0.452072
-margin_right = 0.224976
+margin_right = -0.0439453
 margin_bottom = 0.452087
 mouse_filter = 2
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 30.0
 autostart = true
+
+[node name="ReactorButton" type="Button" parent="."]
+margin_left = 248.0
+margin_top = 8.0
+margin_right = 368.0
+margin_bottom = 80.0
+text = "Reactor"
+
+[node name="UpgradeButton" type="Button" parent="."]
+margin_left = 368.0
+margin_top = 8.0
+margin_right = 480.0
+margin_bottom = 80.0
+text = "Upgrades"
+
+[node name="Button" type="Button" parent="."]
+margin_left = 480.0
+margin_top = 8.0
+margin_right = 600.0
+margin_bottom = 80.0
+text = "Prestige"
+clip_text = true
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="pressed" from="ReactorButton" to="TabContainer" method="set" binds= [ "current_tab", 0 ]]
+[connection signal="pressed" from="UpgradeButton" to="TabContainer" method="set" binds= [ "current_tab", 2 ]]
+[connection signal="pressed" from="Button" to="TabContainer" method="set" binds= [ "current_tab", 1 ]]

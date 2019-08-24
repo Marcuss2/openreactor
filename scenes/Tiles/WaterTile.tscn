@@ -15,14 +15,16 @@ animations = [ {
 extents = Vector2( 16, 16 )
 
 [node name="WaterTile" type="Area2D" groups=[
-"persist_2",
 "tiles",
+"persist_2",
+"pump_tile",
 ]]
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
 id = 3
+upgrade_id = 3
 cost = 1.0
 hover_text = "Water pump. Generates water and puts it into surrounding tiles."
 

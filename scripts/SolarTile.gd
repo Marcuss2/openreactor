@@ -20,3 +20,11 @@ func save():
 
 func get_hover_text():
 	return hover_text + "\nCost: %s Heat generation: %s" % [Global.get_magnified_string(cost), Global.get_magnified_string(heat_gen)]
+
+
+func upgrade_heat_gen(multiplier):
+	heat_gen *= multiplier
+
+
+func apply_upgrade(upgrades):
+	heat_gen *= upgrades[Upgrades.UpgradeType.ACTIVITY]

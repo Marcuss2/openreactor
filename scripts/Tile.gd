@@ -22,7 +22,8 @@ export var hover_text = "An empty tile"
 func tile_logic(tiles):
 	if mouse_in:
 		Global.set_text_hover_label(get_hover_text())
-
+	for i in tile_entities.values():
+		i.tick()
 
 func get_hover_text():
 	return hover_text
@@ -31,6 +32,10 @@ func get_hover_text():
 func _ready():
 	for entity in $AnimatedSprite/Bars.get_children():
 		tile_entities[entity.name] = entity
+
+
+func apply_upgrade(upgrades):
+	pass
 
 
 func save():

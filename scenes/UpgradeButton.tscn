@@ -4,6 +4,7 @@
 [ext_resource path="res://scripts/UpgradeButton.gd" type="Script" id=2]
 
 [node name="UpgradeButton" type="TextureRect" groups=[
+"tick_action",
 "persist_update",
 ]]
 texture = ExtResource( 1 )

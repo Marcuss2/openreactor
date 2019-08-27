@@ -10,7 +10,12 @@ export var capacity = 10.0
 
 var position = Vector2(0, 0)
 
-func _process(delta):
+
+func _ready():
+	tick()
+
+
+func tick():
 	if critical_overflow and amount > capacity:
 		emit_signal("critical_over_capacity")
 		return
@@ -23,9 +28,9 @@ func _process(delta):
 
 func get_hover_text():
 	if is_inside_tree():
-		return name + ": " + str(amount) + "/" + str(capacity)
+		return name + ": " + Global.get_magnified_string(amount) + "/" + Global.get_magnified_string(capacity)
 	else:
-		return name + " capacity: " + str(capacity)
+		return name + " capacity: " + Global.get_magnified_string(capacity)
 
 
 func save():
@@ -45,7 +50,7 @@ func save():
 		"tint_progress_a" : tint_progress.a
 		}
 	return save_dict
-	
-	
+
+
 func after_load():
 	pass

@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scripts/WaterTile.gd" type="Script" id=1]
-[ext_resource path="res://assets/water.png" type="Texture" id=2]
+[ext_resource path="res://assets/empty_tile.png" type="Texture" id=2]
+[ext_resource path="res://assets/water.png" type="Texture" id=3]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -11,13 +12,21 @@ animations = [ {
 "speed": 5.0
 } ]
 
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 16, 16 )
 
 [node name="WaterTile" type="Area2D" groups=[
-"tiles",
-"persist_2",
 "pump_tile",
+"persist_2",
+"tiles",
 ]]
 script = ExtResource( 1 )
 __meta__ = {
@@ -26,10 +35,13 @@ __meta__ = {
 id = 3
 upgrade_id = 3
 cost = 1.0
-hover_text = "Water pump. Generates water and puts it into surrounding tiles."
+hover_text = "Wooden water pump. Generates water and puts it into surrounding tiles."
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="AnimatedSprite"]
+frames = SubResource( 3 )
 
 [node name="Bars" type="VBoxContainer" parent="AnimatedSprite"]
 margin_left = -16.0

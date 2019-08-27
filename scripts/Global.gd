@@ -20,6 +20,7 @@ func hovered(id):
 
 
 func set_upgrades(tile):
+	Upgrades.apply_upgrade_to_tile(tile)
 	return tile
 
 
@@ -36,7 +37,9 @@ func get_money_string():
 
 
 func get_tile_instance(id):
-	return tile_resource[id].instance()
+	var tile = tile_resource[id].instance()
+	tile = set_upgrades(tile)
+	return tile
 
 
 func set_text_hover_label(text):
@@ -52,6 +55,7 @@ func save_globals(save_game):
 
 func save_serialization(save_game):
 	save_globals(save_game)
+	save_game.store_line(to_json(Upgrades.save()))
 	var save_nodes = get_tree().get_nodes_in_group("persist_1")
 	for i in save_nodes:
 		var node_data = i.call("save")
@@ -110,6 +114,9 @@ func load_game():
 			continue
 		elif current_line.has("path"):
 			get_node(current_line["path"]).load_node(current_line)
+			continue
+		elif current_line.has("upgrades"):
+			Upgrades.load_node(current_line)
 			continue
 		if !entities_deleted and current_line["filename"] == "res://scenes/Entity.tscn":
 			for entity in get_tree().get_nodes_in_group("persist_3"):

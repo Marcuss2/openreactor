@@ -1,7 +1,12 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scenes/UpgradeButton.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/size_upgrade.png" type="Texture" id=2]
+[ext_resource path="res://assets/water_capacity_upgrade.png" type="Texture" id=3]
+[ext_resource path="res://assets/simple_gen_heat_capacity_upgrade.png" type="Texture" id=4]
+[ext_resource path="res://assets/simple_gen_water_capacity_upgrade.png" type="Texture" id=5]
+[ext_resource path="res://assets/power_production_upgrade.png" type="Texture" id=6]
+[ext_resource path="res://assets/solar_upgrade.png" type="Texture" id=7]
 
 [node name="UpgradeContainer" type="VBoxContainer"]
 anchor_right = 1.0
@@ -11,16 +16,24 @@ margin_top = 8.0
 margin_right = -260.0
 margin_bottom = -132.0
 size_flags_horizontal = 3
+alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 margin_right = 760.0
-margin_bottom = 64.0
+margin_bottom = 628.0
+size_flags_vertical = 3
 alignment = 1
 
-[node name="SizeUpgrade" parent="HBoxContainer" instance=ExtResource( 1 )]
-margin_left = 348.0
-margin_right = 412.0
-margin_bottom = 64.0
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer"]
+margin_right = 123.0
+margin_bottom = 628.0
+size_flags_horizontal = 3
+
+[node name="SizeUpgrade" parent="HBoxContainer/CenterContainer" instance=ExtResource( 1 )]
+margin_left = 29.0
+margin_top = 282.0
+margin_right = 93.0
+margin_bottom = 346.0
 texture = ExtResource( 2 )
 text_label = "Increase size of the reactor."
 maxed_out_label = "Maxed out size of the reactor."
@@ -30,3 +43,118 @@ group_upgrade = "size_upgrade_"
 upgrade_function = "set_enabled"
 unlock_type_argument = [ true ]
 increment_limit = 23
+
+[node name="CenterContainer2" type="CenterContainer" parent="HBoxContainer"]
+margin_left = 127.0
+margin_right = 250.0
+margin_bottom = 628.0
+size_flags_horizontal = 3
+
+[node name="PumpUpgrade" parent="HBoxContainer/CenterContainer2" instance=ExtResource( 1 )]
+margin_left = 29.0
+margin_top = 282.0
+margin_right = 93.0
+margin_bottom = 346.0
+texture = ExtResource( 3 )
+cost = 30.0
+upgrade_id = 3
+text_label = "Water pump upgrade. Increases water pumping by 50%."
+maxed_out_label = "If you see this, you probably finished the game."
+type = 3
+upgrade_multiplier = 1.5
+cost_multiplier = 2.5
+group_upgrade = "pump_tile"
+upgrade_function = "upgrade_water_gen"
+increment = 1
+increment_limit = 999
+
+[node name="CenterContainer4" type="CenterContainer" parent="HBoxContainer"]
+margin_left = 254.0
+margin_right = 377.0
+margin_bottom = 628.0
+size_flags_horizontal = 3
+
+[node name="SimpleGenHeatCapacity" parent="HBoxContainer/CenterContainer4" instance=ExtResource( 1 )]
+margin_left = 29.0
+margin_top = 282.0
+margin_right = 93.0
+margin_bottom = 346.0
+texture = ExtResource( 4 )
+cost = 50.0
+upgrade_id = 2
+text_label = "Increases heat capacity in simple power generators by 20%"
+maxed_out_label = "Maxed out simple power heat gen."
+upgrade_multiplier = 1.2
+cost_multiplier = 1.9
+group_upgrade = "basic_power_tile"
+upgrade_function = "upgrade_heat_capacity"
+increment = 1
+increment_limit = 999
+
+[node name="CenterContainer5" type="CenterContainer" parent="HBoxContainer"]
+margin_left = 381.0
+margin_right = 504.0
+margin_bottom = 628.0
+size_flags_horizontal = 3
+
+[node name="SimpleGenWaterCapacity" parent="HBoxContainer/CenterContainer5" instance=ExtResource( 1 )]
+margin_left = 29.0
+margin_top = 282.0
+margin_right = 93.0
+margin_bottom = 346.0
+texture = ExtResource( 5 )
+cost = 40.0
+upgrade_id = 2
+text_label = "Increases water capacity in simple power generators by 20%"
+type = 2
+upgrade_multiplier = 1.2
+cost_multiplier = 1.9
+group_upgrade = "basic_power_tile"
+upgrade_function = "upgrade_water_capacity"
+increment = 1
+increment_limit = 999
+
+[node name="CenterContainer3" type="CenterContainer" parent="HBoxContainer"]
+margin_left = 508.0
+margin_right = 631.0
+margin_bottom = 628.0
+size_flags_horizontal = 3
+
+[node name="SimpleGenUpgrade" parent="HBoxContainer/CenterContainer3" instance=ExtResource( 1 )]
+margin_left = 29.0
+margin_top = 282.0
+margin_right = 93.0
+margin_bottom = 346.0
+texture = ExtResource( 6 )
+cost = 20.0
+upgrade_id = 2
+text_label = "Increase power generation of simple power plants by 33%"
+type = 3
+cost_multiplier = 3.0
+group_upgrade = "basic_power_tile"
+upgrade_function = "upgrade_power_gen"
+increment = 1
+increment_limit = 999
+
+[node name="CenterContainer6" type="CenterContainer" parent="HBoxContainer"]
+margin_left = 635.0
+margin_right = 760.0
+margin_bottom = 628.0
+size_flags_horizontal = 3
+
+[node name="SolarUpgrade" parent="HBoxContainer/CenterContainer6" instance=ExtResource( 1 )]
+margin_left = 30.0
+margin_top = 282.0
+margin_right = 94.0
+margin_bottom = 346.0
+texture = ExtResource( 7 )
+cost = 10.0
+upgrade_id = 1
+text_label = "Upgrades solar heat generation by 10%"
+maxed_out_label = "Maxed out solar upgrade."
+type = 3
+upgrade_multiplier = 1.1
+cost_multiplier = 2.0
+group_upgrade = "solar_tile"
+upgrade_function = "upgrade_heat_gen"
+increment = 1

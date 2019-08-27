@@ -14,6 +14,8 @@ export var unlock_type_argument = []
 export var increment = 3
 export var increment_limit = 10
 
+var unavaiable = Color(0.7, 0.7, 0.7, 0.5)
+
 
 var level = 1
 
@@ -32,6 +34,13 @@ func save():
 		"level" : level
 		}
 	return save_dict
+
+
+func tick():
+	if cost > Global.money:
+		modulate = unavaiable
+	else:
+		modulate = Color.white
 
 
 func maxed():
@@ -65,6 +74,8 @@ func upgrade():
 		return
 	level += 1
 	$Label.text = str(level)
+	Global.set_text_hover_label(text_label + "\nCost: " + Global.get_magnified_string(cost))
+	tick()
 
 
 func _on_UpgradeButton_gui_input(event):

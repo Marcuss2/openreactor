@@ -20,3 +20,11 @@ func save():
 
 func get_hover_text():
 	return hover_text + "\nCost: %s Water generation: %s" % [Global.get_magnified_string(cost), Global.get_magnified_string(water_gen)]
+
+
+func upgrade_water_gen(multiplier):
+	water_gen *= multiplier
+
+
+func apply_upgrade(upgrades):
+	water_gen *= upgrades[Upgrades.UpgradeType.ACTIVITY]

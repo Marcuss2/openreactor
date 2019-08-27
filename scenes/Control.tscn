@@ -10,7 +10,7 @@
 [ext_resource path="res://scenes/TilePick.tscn" type="PackedScene" id=8]
 [ext_resource path="res://assets/solar.png" type="Texture" id=9]
 [ext_resource path="res://assets/water.png" type="Texture" id=10]
-[ext_resource path="res://assets/lowgen.png" type="Texture" id=11]
+[ext_resource path="res://assets/wood_gen.png" type="Texture" id=11]
 [ext_resource path="res://assets/bar.png" type="Texture" id=12]
 
 [node name="UI" type="Control"]

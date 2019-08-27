@@ -4,6 +4,7 @@
 [ext_resource path="res://assets/empty_tile.png" type="Texture" id=2]
 
 [node name="TilePick" type="CenterContainer" groups=[
+"tick_action",
 "tile_buttons",
 ]]
 margin_right = 74.0
@@ -16,4 +17,11 @@ margin_left = 21.0
 margin_right = 53.0
 margin_bottom = 32.0
 texture = ExtResource( 2 )
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+margin_left = 37.0
+margin_top = 16.0
+margin_right = 37.0
+margin_bottom = 16.0
+mouse_filter = 2
 [connection signal="gui_input" from="TextureRect" to="." method="_on_TextureRect_gui_input"]

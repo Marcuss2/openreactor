@@ -1,0 +1,64 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://scripts/ExchangerTile.gd" type="Script" id=1]
+[ext_resource path="res://assets/empty_tile.png" type="Texture" id=2]
+[ext_resource path="res://assets/heat_wood_exchanger.png" type="Texture" id=3]
+[ext_resource path="res://scenes/Entity.tscn" type="PackedScene" id=4]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 16, 16 )
+
+[node name="ExchangerTile" type="Area2D" groups=[
+"second_pass",
+"heat_exchanger",
+"tiles",
+"persist_2",
+]]
+script = ExtResource( 1 )
+id = 4
+upgrade_id = 4
+cost = 10.0
+type = 2
+hover_text = "Heat Exchanger tile, exchanges up to 25% of its heat with tiles around it per tick."
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="AnimatedSprite"]
+frames = SubResource( 2 )
+
+[node name="Bars" type="VBoxContainer" parent="AnimatedSprite"]
+margin_left = -16.0
+margin_right = 16.0
+margin_bottom = 16.0
+rect_pivot_offset = Vector2( -64, -16 )
+mouse_filter = 2
+custom_constants/separation = 0
+alignment = 2
+
+[node name="Heat" parent="AnimatedSprite/Bars" instance=ExtResource( 4 )]
+margin_top = 12.0
+margin_bottom = 16.0
+tint_progress = Color( 1, 0, 0, 1 )
+capacity = 30.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 3 )
+[connection signal="input_event" from="." to="." method="_on_Tile_input_event"]
+[connection signal="mouse_entered" from="." to="." method="_on_Tile_mouse_entered"]

@@ -1,15 +1,19 @@
 extends Node
 
 
-export var cost = []
+var cost = []
 export var tile_resource = []
 export var money := 3.0
 
 
-var upgrades = []
-
-
 var magnitudes = ["", "k", "M", "G", "T", "P", "E", "Z", "Y"]
+
+
+func _ready():
+	cost = []
+	for resource in tile_resource:
+		var tile = resource.instance()
+		cost.append(tile.cost)
 
 
 func hovered(id):

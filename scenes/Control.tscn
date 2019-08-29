@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scripts/Control.gd" type="Script" id=1]
 [ext_resource path="res://scripts/MoneyCount.gd" type="Script" id=2]
@@ -11,7 +11,8 @@
 [ext_resource path="res://assets/solar.png" type="Texture" id=9]
 [ext_resource path="res://assets/water.png" type="Texture" id=10]
 [ext_resource path="res://assets/wood_gen.png" type="Texture" id=11]
-[ext_resource path="res://assets/bar.png" type="Texture" id=12]
+[ext_resource path="res://assets/heat_wood_exchanger.png" type="Texture" id=12]
+[ext_resource path="res://assets/bar.png" type="Texture" id=13]
 
 [node name="UI" type="Control"]
 light_mask = 0
@@ -35,16 +36,26 @@ margin_right = 232.0
 margin_bottom = 104.0
 grow_vertical = 2
 
-[node name="Button" type="Button" parent="GeneralContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="GeneralContainer/VBoxContainer"]
 margin_right = 232.0
-margin_bottom = 56.0
-size_flags_vertical = 3
-text = "Settings"
+margin_bottom = 20.0
+text = "Research Points"
+align = 1
+valign = 1
+
+[node name="Label2" type="Label" parent="GeneralContainer/VBoxContainer"]
+margin_top = 27.0
+margin_right = 232.0
+margin_bottom = 47.0
+size_flags_vertical = 6
+text = "0"
+align = 1
 
 [node name="MoneyLabel" type="Label" parent="GeneralContainer/VBoxContainer"]
-margin_top = 60.0
+margin_top = 57.0
 margin_right = 232.0
-margin_bottom = 80.0
+margin_bottom = 77.0
+size_flags_vertical = 6
 text = "Money"
 align = 1
 
@@ -82,21 +93,27 @@ margin_bottom = 32.0
 alignment = 2
 
 [node name="TilePick" parent="TabContainer/ToolContainer/HBoxContainer" instance=ExtResource( 8 )]
-margin_right = 72.0
+margin_right = 53.0
 id = 1
 texture = ExtResource( 9 )
 
 [node name="TilePick2" parent="TabContainer/ToolContainer/HBoxContainer" instance=ExtResource( 8 )]
-margin_left = 76.0
-margin_right = 148.0
+margin_left = 57.0
+margin_right = 110.0
 id = 2
 texture = ExtResource( 10 )
 
 [node name="TilePick3" parent="TabContainer/ToolContainer/HBoxContainer" instance=ExtResource( 8 )]
-margin_left = 152.0
-margin_right = 224.0
+margin_left = 114.0
+margin_right = 167.0
 id = 3
 texture = ExtResource( 11 )
+
+[node name="TilePick4" parent="TabContainer/ToolContainer/HBoxContainer" instance=ExtResource( 8 )]
+margin_left = 171.0
+margin_right = 224.0
+id = 4
+texture = ExtResource( 12 )
 
 [node name="ReactorContainer" type="VBoxContainer" parent="TabContainer"]
 visible = false
@@ -118,49 +135,49 @@ alignment = 2
 modulate = Color( 0, 0, 0, 1 )
 position = Vector2( 457.413, 96 )
 scale = Vector2( 24.0124, 16 )
-texture = ExtResource( 12 )
+texture = ExtResource( 13 )
 offset = Vector2( 7.26241, 0 )
 
 [node name="bar" type="Sprite" parent="."]
 modulate = Color( 0.0705882, 0.0705882, 0.0705882, 1 )
 position = Vector2( 279.206, 116 )
 scale = Vector2( 32, 4 )
-texture = ExtResource( 12 )
+texture = ExtResource( 13 )
 offset = Vector2( 7.26241, 0 )
 
 [node name="bar5" type="Sprite" parent="."]
 modulate = Color( 0.0705882, 0.0705882, 0.0705882, 1 )
 position = Vector2( 279.206, 4 )
 scale = Vector2( 32, 4 )
-texture = ExtResource( 12 )
+texture = ExtResource( 13 )
 offset = Vector2( 7.26241, 0 )
 
 [node name="bar3" type="Sprite" parent="."]
 modulate = Color( 0.0705882, 0.0705882, 0.0705882, 1 )
 position = Vector2( 512, 763.838 )
 scale = Vector2( 32, 3.83823 )
-texture = ExtResource( 12 )
+texture = ExtResource( 13 )
 
 [node name="bar2" type="Sprite" parent="."]
 modulate = Color( 0.0705882, 0.0705882, 0.0705882, 1 )
 position = Vector2( 244, 384 )
 rotation = 1.5708
 scale = Vector2( 24, 4 )
-texture = ExtResource( 12 )
+texture = ExtResource( 13 )
 
 [node name="bar6" type="Sprite" parent="."]
 modulate = Color( 0.0705882, 0.0705882, 0.0705882, 1 )
 position = Vector2( 4, 384 )
 rotation = 1.57079
 scale = Vector2( 24, 4 )
-texture = ExtResource( 12 )
+texture = ExtResource( 13 )
 
 [node name="bar4" type="Sprite" parent="."]
 modulate = Color( 0.0705882, 0.0705882, 0.0705882, 1 )
 position = Vector2( 1020, 383.992 )
 rotation = 1.5708
 scale = Vector2( 23.9993, 4 )
-texture = ExtResource( 12 )
+texture = ExtResource( 13 )
 
 [node name="HoverLabel" type="RichTextLabel" parent="." groups=[
 "hover_label",
@@ -172,7 +189,7 @@ margin_bottom = 112.0
 custom_constants/line_separation = -4
 text = "An empty tile"
 scroll_active = false
-[connection signal="pressed" from="GeneralContainer/VBoxContainer/Button" to="." method="_on_Settings_Button_pressed"]
 [connection signal="clicked" from="TabContainer/ToolContainer/HBoxContainer/TilePick" to="." method="_on_Tile_Button_pressed"]
 [connection signal="clicked" from="TabContainer/ToolContainer/HBoxContainer/TilePick2" to="." method="_on_Tile_Button_pressed"]
 [connection signal="clicked" from="TabContainer/ToolContainer/HBoxContainer/TilePick3" to="." method="_on_Tile_Button_pressed"]
+[connection signal="clicked" from="TabContainer/ToolContainer/HBoxContainer/TilePick4" to="." method="_on_Tile_Button_pressed"]

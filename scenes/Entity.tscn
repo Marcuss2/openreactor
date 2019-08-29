@@ -6,6 +6,7 @@
 
 [node name="Entity" type="TextureProgress" groups=[
 "persist_3",
+"tick_action",
 ]]
 margin_right = 32.0
 margin_bottom = 2.0

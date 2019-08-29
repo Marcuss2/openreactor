@@ -91,6 +91,7 @@ func execute_tile_logic():
 		for j in range(gridsize_y):
 			tiles[i][j].tile_logic(get_surrounding_tiles(i, j))
 	get_tree().call_group("tick_action", "tick")
+	get_tree().call_group("second_pass", "second_pass")
 
 
 func _on_Tile_clicked(x_indice, y_indice):

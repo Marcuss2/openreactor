@@ -2,7 +2,7 @@ extends Node
 
 export var upgrade_count = 20
 
-enum UpgradeType {CAPACITY_HEAT, CAPACITY_LONGETIVITY, CAPACITY_WATER, ACTIVITY, UNLOCK}
+enum UpgradeType {CAPACITY_HEAT, CAPACITY_GENERIC, CAPACITY_WATER, ACTIVITY, UNLOCK}
 
 var upgrades = []
 

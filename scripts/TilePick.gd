@@ -14,6 +14,11 @@ var cost = 1.0
 func _ready():
 	$TextureRect2.texture = texture
 	cost = Global.cost[id]
+	tick()
+
+
+func after_load():
+	tick()
 
 
 func _on_TextureRect_gui_input(event):

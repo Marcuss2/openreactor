@@ -52,4 +52,3 @@ func apply_upgrade(upgrades):
 
 func after_load():
 	.after_load()
-	$AnimatedSprite/Bars/Heat.connect("critical_over_capacity", self, "explode")

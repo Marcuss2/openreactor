@@ -10,7 +10,9 @@ export var cost = 0.0
 var tile_entities = {}
 var enabled = true
 
+enum TileType {EMPTY, REACTOR, EXCHANGER_HEAT, GENERATOR, BOOSTER, OTHER}
 
+export (TileType) var type
 
 var x_indice = 0
 var y_indice = 0
@@ -22,16 +24,17 @@ export var hover_text = "An empty tile"
 func tile_logic(tiles):
 	if mouse_in:
 		Global.set_text_hover_label(get_hover_text())
-	for i in tile_entities.values():
-		i.tick()
 
 func get_hover_text():
 	return hover_text
 
 
 func _ready():
+	tile_entities = {}
 	for entity in $AnimatedSprite/Bars.get_children():
 		tile_entities[entity.name] = entity
+		entity.connect("critical_over_capacity", self, "explode")
+		entity.connect("critial_under_capacity", self, "ran_out")
 
 
 func apply_upgrade(upgrades):
@@ -76,6 +79,10 @@ func get_entities_from_tiles(entity, tiles):
 
 func explode():
 	emit_signal("exploded", x_indice, y_indice)
+
+
+func ran_out():
+	enabled = false
 
 
 func init(pos_x, pos_y, x_indice, y_indice):

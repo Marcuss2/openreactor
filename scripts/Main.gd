@@ -10,3 +10,7 @@ func _ready():
 
 func _on_Timer_timeout():
 	Global.save_game()
+
+
+func execute_tile_logic():
+	$TabContainer/CenterContainer/TileArea.execute_tile_logic()

@@ -53,4 +53,4 @@ func save():
 
 
 func after_load():
-	pass
+	tick()

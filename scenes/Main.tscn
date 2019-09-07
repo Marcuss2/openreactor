@@ -80,13 +80,21 @@ text = "Prestige"
 clip_text = true
 
 [node name="Button2" type="Button" parent="."]
-margin_left = 824.0
+margin_left = 768.0
 margin_top = 8.0
-margin_right = 936.0
+margin_right = 880.0
 margin_bottom = 80.0
 text = "Tick"
+
+[node name="Button3" type="Button" parent="."]
+margin_left = 880.54
+margin_top = 7.45964
+margin_right = 1016.54
+margin_bottom = 79.4596
+text = "Money * 1000"
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="pressed" from="ReactorButton" to="TabContainer" method="set" binds= [ "current_tab", 0 ]]
 [connection signal="pressed" from="UpgradeButton" to="TabContainer" method="set" binds= [ "current_tab", 2 ]]
 [connection signal="pressed" from="Button" to="TabContainer" method="set" binds= [ "current_tab", 1 ]]
 [connection signal="pressed" from="Button2" to="." method="execute_tile_logic"]
+[connection signal="pressed" from="Button3" to="." method="_on_Button3_pressed"]

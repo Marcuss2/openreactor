@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://scripts/Control.gd" type="Script" id=1]
 [ext_resource path="res://scripts/MoneyCount.gd" type="Script" id=2]
@@ -12,7 +12,10 @@
 [ext_resource path="res://assets/water.png" type="Texture" id=10]
 [ext_resource path="res://assets/wood_gen.png" type="Texture" id=11]
 [ext_resource path="res://assets/heat_wood_exchanger.png" type="Texture" id=12]
-[ext_resource path="res://assets/bar.png" type="Texture" id=13]
+[ext_resource path="res://assets/reactor_onerod.png" type="Texture" id=13]
+[ext_resource path="res://assets/reactor_tworod.png" type="Texture" id=14]
+[ext_resource path="res://assets/reactor_fourod.png" type="Texture" id=15]
+[ext_resource path="res://assets/bar.png" type="Texture" id=16]
 
 [node name="UI" type="Control"]
 light_mask = 0
@@ -123,61 +126,78 @@ margin_left = 4.0
 margin_top = 38.0
 margin_right = -4.0
 margin_bottom = -4.0
+mouse_filter = 2
 size_flags_horizontal = 13
 size_flags_vertical = 13
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/ReactorContainer"]
 margin_right = 224.0
 margin_bottom = 32.0
+mouse_filter = 2
 alignment = 2
+
+[node name="TilePick" parent="TabContainer/ReactorContainer/HBoxContainer" instance=ExtResource( 8 )]
+id = 5
+texture = ExtResource( 13 )
+tint = Color( 0.0392157, 0.384314, 0, 1 )
+
+[node name="TilePick2" parent="TabContainer/ReactorContainer/HBoxContainer" instance=ExtResource( 8 )]
+id = 6
+texture = ExtResource( 14 )
+tint = Color( 0.0392157, 0.384314, 0, 1 )
+
+[node name="TilePick3" parent="TabContainer/ReactorContainer/HBoxContainer" instance=ExtResource( 8 )]
+id = 7
+texture = ExtResource( 15 )
+tint = Color( 0.0392157, 0.384314, 0, 1 )
 
 [node name="bar7" type="Sprite" parent="."]
 modulate = Color( 0, 0, 0, 1 )
 position = Vector2( 457.413, 96 )
 scale = Vector2( 24.0124, 16 )
-texture = ExtResource( 13 )
+texture = ExtResource( 16 )
 offset = Vector2( 7.26241, 0 )
 
 [node name="bar" type="Sprite" parent="."]
 modulate = Color( 0.0705882, 0.0705882, 0.0705882, 1 )
 position = Vector2( 279.206, 116 )
 scale = Vector2( 32, 4 )
-texture = ExtResource( 13 )
+texture = ExtResource( 16 )
 offset = Vector2( 7.26241, 0 )
 
 [node name="bar5" type="Sprite" parent="."]
 modulate = Color( 0.0705882, 0.0705882, 0.0705882, 1 )
 position = Vector2( 279.206, 4 )
 scale = Vector2( 32, 4 )
-texture = ExtResource( 13 )
+texture = ExtResource( 16 )
 offset = Vector2( 7.26241, 0 )
 
 [node name="bar3" type="Sprite" parent="."]
 modulate = Color( 0.0705882, 0.0705882, 0.0705882, 1 )
 position = Vector2( 512, 763.838 )
 scale = Vector2( 32, 3.83823 )
-texture = ExtResource( 13 )
+texture = ExtResource( 16 )
 
 [node name="bar2" type="Sprite" parent="."]
 modulate = Color( 0.0705882, 0.0705882, 0.0705882, 1 )
 position = Vector2( 244, 384 )
 rotation = 1.5708
 scale = Vector2( 24, 4 )
-texture = ExtResource( 13 )
+texture = ExtResource( 16 )
 
 [node name="bar6" type="Sprite" parent="."]
 modulate = Color( 0.0705882, 0.0705882, 0.0705882, 1 )
 position = Vector2( 4, 384 )
 rotation = 1.57079
 scale = Vector2( 24, 4 )
-texture = ExtResource( 13 )
+texture = ExtResource( 16 )
 
 [node name="bar4" type="Sprite" parent="."]
 modulate = Color( 0.0705882, 0.0705882, 0.0705882, 1 )
 position = Vector2( 1020, 383.992 )
 rotation = 1.5708
 scale = Vector2( 23.9993, 4 )
-texture = ExtResource( 13 )
+texture = ExtResource( 16 )
 
 [node name="HoverLabel" type="RichTextLabel" parent="." groups=[
 "hover_label",
@@ -193,3 +213,6 @@ scroll_active = false
 [connection signal="clicked" from="TabContainer/ToolContainer/HBoxContainer/TilePick2" to="." method="_on_Tile_Button_pressed"]
 [connection signal="clicked" from="TabContainer/ToolContainer/HBoxContainer/TilePick3" to="." method="_on_Tile_Button_pressed"]
 [connection signal="clicked" from="TabContainer/ToolContainer/HBoxContainer/TilePick4" to="." method="_on_Tile_Button_pressed"]
+[connection signal="clicked" from="TabContainer/ReactorContainer/HBoxContainer/TilePick" to="." method="_on_Tile_Button_pressed"]
+[connection signal="clicked" from="TabContainer/ReactorContainer/HBoxContainer/TilePick2" to="." method="_on_Tile_Button_pressed"]
+[connection signal="clicked" from="TabContainer/ReactorContainer/HBoxContainer/TilePick3" to="." method="_on_Tile_Button_pressed"]

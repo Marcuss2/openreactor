@@ -184,28 +184,40 @@ func update_outlets(outlet_count):
 	right_overfilled = false
 	var divided_amount = 0.0
 	if left_exists:
-		left_outlet += ((entity.amount / outlet_count) - left_outlet) / 2
+		if left_outlet < entity.amount / outlet_count:
+			left_outlet += ((entity.amount / outlet_count) - left_outlet) / 2
+		else:
+			left_outlet += ((entity.amount / outlet_count) - left_outlet)
 		if left_entity.amount > entity.amount and entity.amount != 0 and left_entity.amount != 0:
 			left_overfilled = true
 			var ratio = left_entity.amount / entity.amount
 			divided_amount += left_outlet * (ratio - 1)
 			left_outlet /= ratio
 	if down_exists:
-		down_outlet += ((entity.amount / outlet_count) - down_outlet) / 2
+		if down_outlet < entity.amount / outlet_count:
+			down_outlet += ((entity.amount / outlet_count) - down_outlet) / 2
+		else:
+			down_outlet += ((entity.amount / outlet_count) - down_outlet)
 		if down_entity.amount > entity.amount and entity.amount != 0 and down_entity.amount != 0:
 			down_overfilled = true
 			var ratio = down_entity.amount / entity.amount
 			divided_amount += down_outlet * (ratio - 1)
 			down_outlet /= ratio
 	if up_exists:
-		up_outlet += ((entity.amount / outlet_count) - up_outlet) / 2
+		if up_outlet < entity.amount / outlet_count:
+			up_outlet += ((entity.amount / outlet_count) - up_outlet) / 2
+		else:
+			up_outlet += ((entity.amount / outlet_count) - up_outlet)
 		if up_entity.amount > entity.amount and entity.amount != 0 and up_entity.amount != 0:
 			up_overfilled = true
 			var ratio = up_entity.amount / entity.amount
 			divided_amount += up_outlet * (ratio - 1)
 			up_outlet /= ratio
 	if right_exists:
-		right_outlet += ((entity.amount / outlet_count) - right_outlet) / 2
+		if right_outlet < entity.amount / outlet_count:
+			right_outlet += ((entity.amount / outlet_count) - right_outlet) / 2
+		else:
+			right_outlet += ((entity.amount / outlet_count) - right_outlet) 
 		if right_entity.amount > entity.amount and entity.amount != 0 and right_entity.amount != 0:
 			right_overfilled = true
 			var ratio = right_entity.amount / entity.amount
@@ -255,44 +267,22 @@ func second_pass():
 	if left_exists:
 		left_entity.amount += left_outlet - left_intake
 		entity.amount += left_intake - left_outlet
-#		if entity.amount < 0.0:
-#			left_entity.amount -= entity.amount
-#			entity.amount = 0.0
-#			left_outlet = 0.0
-#		elif left_entity.amount < 0.0:
-#			entity.amount -= left_entity.amount
-#			left_entity.amount = 0.0
-#			left_intake = 0.0
+		if left_entity.amount < 0.0:
+			left_entity.amount = 0.0
 	if down_exists:
 		down_entity.amount += down_outlet - down_intake
 		entity.amount += down_intake - down_outlet
-#		if entity.amount < 0.0:
-#			down_entity.amount -= entity.amount
-#			entity.amount = 0.0
-#			down_outlet = 0.0
-#		elif down_entity.amount < 0.0:
-#			entity.amount -= down_entity.amount
-#			down_entity.amount = 0.0
-#			down_intake = 0.0
+		if down_entity.amount < 0.0:
+			down_entity.amount = 0.0
 	if up_exists:
 		up_entity.amount += up_outlet - up_intake
 		entity.amount += up_intake - up_outlet
-#		if entity.amount < 0.0:
-#			up_entity.amount -= entity.amount
-#			entity.amount = 0.0
-#			up_outlet = 0.0
-#		elif up_entity.amount < 0.0:
-#			entity.amount -= up_entity.amount
-#			up_entity.amount = 0.0
-#			up_intake = 0.0
+		if up_entity.amount < 0.0:
+			up_entity.amount = 0.0
 	if right_exists:
 		right_entity.amount += right_outlet - right_intake
 		entity.amount += right_intake - right_outlet
-#		if entity.amount < 0.0:
-#			right_entity.amount -= entity.amount
-#			entity.amount = 0.0
-#			right_outlet = 0.0
-#		elif right_entity.amount < 0.0:
-#			entity.amount -= right_entity.amount
-#			right_entity.amount = 0.0
-#			right_intake = 0.0
+		if right_entity.amount < 0.0:
+			right_entity.amount = 0.0
+	if entity.amount < 0.0:
+		entity.amount = 0.0

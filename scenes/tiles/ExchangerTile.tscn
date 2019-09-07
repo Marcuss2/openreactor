@@ -25,10 +25,10 @@ animations = [ {
 extents = Vector2( 16, 16 )
 
 [node name="ExchangerTile" type="Area2D" groups=[
-"second_pass",
-"heat_exchanger",
 "tiles",
 "persist_2",
+"second_pass",
+"heat_exchanger",
 ]]
 script = ExtResource( 1 )
 id = 4

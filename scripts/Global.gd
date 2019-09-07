@@ -4,8 +4,9 @@ extends Node
 var cost = []
 export var tile_resource = []
 export var money := 3.0
+export var version = "0.0.1"
 
-
+var rebuy = false
 var magnitudes = ["", "k", "M", "G", "T", "P", "E", "Z", "Y"]
 
 
@@ -52,6 +53,7 @@ func set_text_hover_label(text):
 
 func save_globals(save_game):
 	var save_dict = {
+		"version" : version,
 		"money" : money
 		}
 	save_game.store_line(to_json(save_dict))
@@ -84,9 +86,9 @@ func save_game():
 	save_serialization(save_game)
 	save_game.close()
 	var dir = Directory.new()
-	if dir.file_exists("user://savegame.save"):
-		dir.remove("user://savegame.save")
-	dir.rename("user://newsavegame.save", "user://savegame.save")
+	if dir.file_exists("user://savegame + " + version + ".save"):
+		dir.remove("user://savegame" + version + ".save")
+	dir.rename("user://newsavegame.save", "user://savegame" + version + ".save")
 
 
 func load_globals(current_line):
@@ -102,11 +104,11 @@ func pre_load():
 
 func load_game():
 	var save_game = File.new()
-	if not save_game.file_exists("user://savegame.save"):
+	if not save_game.file_exists("user://savegame" + version + ".save"):
 		return false
 	pre_load()
 	var entities_deleted = false
-	save_game.open_compressed("user://savegame.save", File.READ, File.COMPRESSION_ZSTD)
+	save_game.open_compressed("user://savegame" + version + ".save", File.READ, File.COMPRESSION_ZSTD)
 	# Don't touch this unless you absolutely have to.
 	while not save_game.eof_reached():
 		var line = save_game.get_line()
@@ -150,3 +152,7 @@ func after_load():
 		node.after_load()
 	for node in get_tree().get_nodes_in_group("persist_3"):
 		node.after_load()
+
+
+func check_rebuy(upgrade_id):
+	return rebuy and Upgrades.rebuy(upgrade_id)

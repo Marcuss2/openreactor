@@ -1,14 +1,15 @@
 extends "res://scripts/Tile.gd"
 
 export var power_gen = 1.0
+export var efficiency = 0.1
 
 func tile_logic(tiles):
 	var heat = .get_entity("Heat")
 	var water = .get_entity("Water")
-	if heat.amount >= power_gen * 10 and water.amount >= power_gen * 10:
-		heat.amount -= power_gen * 10
-		water.amount -= power_gen * 10
-		Global.money += power_gen
+	if heat.amount >= power_gen and water.amount >= power_gen:
+		heat.amount -= power_gen
+		water.amount -= power_gen
+		Global.money += power_gen * efficiency
 	
 	.tile_logic(tiles)
 	

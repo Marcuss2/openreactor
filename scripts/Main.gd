@@ -14,3 +14,7 @@ func _on_Timer_timeout():
 
 func execute_tile_logic():
 	$TabContainer/CenterContainer/TileArea.execute_tile_logic()
+
+
+func _on_Button3_pressed():
+	Global.money *= 1000

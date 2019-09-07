@@ -39,7 +39,6 @@ upgrade_id = 2
 cost = 1.0
 type = 3
 hover_text = "Simple wooden power plant. Takes heat and water and converts them into power."
-power_gen = 0.1
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )

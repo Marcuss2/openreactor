@@ -6,6 +6,7 @@ export var id = 0
 export (Texture) var texture
 export var selected = Color(0.7, 0.7, 1)
 export var unavaiable = Color(0.7, 0.7, 0.7, 0.5)
+export var tint = Color(1, 1, 1)
 
 var is_selected = false
 var cost = 1.0
@@ -42,13 +43,13 @@ func reset_select(id):
 func tick():
 	if cost > Global.money and is_selected:
 		$TextureRect.modulate = selected.blend(unavaiable)
-		$TextureRect2.modulate = selected.blend(unavaiable)
+		$TextureRect2.modulate = selected.blend(unavaiable).blend(tint)
 	elif cost > Global.money:
 		$TextureRect.modulate = unavaiable
-		$TextureRect2.modulate = unavaiable
+		$TextureRect2.modulate = unavaiable.blend(tint)
 	elif is_selected:
 		$TextureRect.modulate = selected
-		$TextureRect2.modulate = selected
+		$TextureRect2.modulate = selected.blend(tint)
 	else:
 		$TextureRect.modulate = Color(1, 1, 1)
-		$TextureRect2.modulate = Color(1, 1, 1)
+		$TextureRect2.modulate = tint

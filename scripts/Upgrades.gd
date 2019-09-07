@@ -15,6 +15,7 @@ func init():
 		upgrades[i].resize(len(UpgradeType))
 		for j in range(len(UpgradeType)):
 			upgrades[i][j] = 1
+		upgrades[i][UpgradeType.UNLOCK] = false
 
 
 func apply_upgrade(type, upgrade_id, upgrade_multiplier):
@@ -38,3 +39,7 @@ func save():
 
 func load_node(dict):
 	upgrades = dict["upgrades"]
+
+
+func rebuy(upgrade_id):
+	return upgrades[upgrade_id][UpgradeType.UNLOCK]
